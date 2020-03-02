@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LootLogger", "LootLogger\LootLogger.csproj", "{216DE92F-82E7-41AB-9511-EF5FF056AF9F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Broadsword|Any CPU = Broadsword|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Official - DLL|Any CPU = Official - DLL|Any CPU
+		Official - Exe|Any CPU = Official - Exe|Any CPU
+		Official|Any CPU = Official|Any CPU
+		RebirthUO - DLL|Any CPU = RebirthUO - DLL|Any CPU
+		RebirthUO - Exe|Any CPU = RebirthUO - Exe|Any CPU
+		RebirthUO|Any CPU = RebirthUO|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{216DE92F-82E7-41AB-9511-EF5FF056AF9F}.Broadsword|Any CPU.ActiveCfg = Release|Any CPU
+		{216DE92F-82E7-41AB-9511-EF5FF056AF9F}.Broadsword|Any CPU.Build.0 = Release|Any CPU
+		{216DE92F-82E7-41AB-9511-EF5FF056AF9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{216DE92F-82E7-41AB-9511-EF5FF056AF9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{216DE92F-82E7-41AB-9511-EF5FF056AF9F}.Official - DLL|Any CPU.ActiveCfg = Release|Any CPU
+		{216DE92F-82E7-41AB-9511-EF5FF056AF9F}.Official - DLL|Any CPU.Build.0 = Release|Any CPU
+		{216DE92F-82E7-41AB-9511-EF5FF056AF9F}.Official - Exe|Any CPU.ActiveCfg = Release|Any CPU
+		{216DE92F-82E7-41AB-9511-EF5FF056AF9F}.Official - Exe|Any CPU.Build.0 = Release|Any CPU
+		{216DE92F-82E7-41AB-9511-EF5FF056AF9F}.Official|Any CPU.ActiveCfg = Debug|Any CPU
+		{216DE92F-82E7-41AB-9511-EF5FF056AF9F}.Official|Any CPU.Build.0 = Debug|Any CPU
+		{216DE92F-82E7-41AB-9511-EF5FF056AF9F}.RebirthUO - DLL|Any CPU.ActiveCfg = Release|Any CPU
+		{216DE92F-82E7-41AB-9511-EF5FF056AF9F}.RebirthUO - DLL|Any CPU.Build.0 = Release|Any CPU
+		{216DE92F-82E7-41AB-9511-EF5FF056AF9F}.RebirthUO - Exe|Any CPU.ActiveCfg = Release|Any CPU
+		{216DE92F-82E7-41AB-9511-EF5FF056AF9F}.RebirthUO - Exe|Any CPU.Build.0 = Release|Any CPU
+		{216DE92F-82E7-41AB-9511-EF5FF056AF9F}.RebirthUO|Any CPU.ActiveCfg = Release|Any CPU
+		{216DE92F-82E7-41AB-9511-EF5FF056AF9F}.RebirthUO|Any CPU.Build.0 = Release|Any CPU
+		{216DE92F-82E7-41AB-9511-EF5FF056AF9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{216DE92F-82E7-41AB-9511-EF5FF056AF9F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

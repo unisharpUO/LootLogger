@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <xsd:element name="ArrayOfArmor">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" name="Armor">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="ID" type="xsd:unsignedInt" />
+              <xsd:element name="Name" type="xsd:string" />
+              <xsd:element name="PhysicalResist" type="xsd:unsignedByte" />
+              <xsd:element name="FireResist" type="xsd:unsignedByte" />
+              <xsd:element name="ColdResist" type="xsd:unsignedByte" />
+              <xsd:element name="PoisonResist" type="xsd:unsignedByte" />
+              <xsd:element name="EnergyResist" type="xsd:unsignedByte" />
+              <xsd:element name="TotalResist" type="xsd:unsignedByte" />
+              <xsd:element name="DamageEater" type="xsd:unsignedByte" />
+              <xsd:element name="KineticEater" type="xsd:unsignedByte" />
+              <xsd:element name="FireEater" type="xsd:unsignedByte" />
+              <xsd:element name="ColdEater" type="xsd:unsignedByte" />
+              <xsd:element name="PoisonEater" type="xsd:unsignedByte" />
+              <xsd:element name="EnergyEater" type="xsd:unsignedByte" />
+              <xsd:element name="STR" type="xsd:unsignedByte" />
+              <xsd:element name="INT" type="xsd:unsignedByte" />
+              <xsd:element name="DEX" type="xsd:unsignedByte" />
+              <xsd:element name="HP" type="xsd:unsignedByte" />
+              <xsd:element name="Mana" type="xsd:unsignedByte" />
+              <xsd:element name="Stam" type="xsd:unsignedByte" />
+              <xsd:element name="TotalStat" type="xsd:unsignedByte" />
+              <xsd:element name="HPRegen" type="xsd:unsignedByte" />
+              <xsd:element name="ManaRegen" type="xsd:unsignedByte" />
+              <xsd:element name="StamRegen" type="xsd:unsignedByte" />
+              <xsd:element name="LMC" type="xsd:unsignedByte" />
+              <xsd:element name="LRC" type="xsd:unsignedByte" />
+              <xsd:element name="CastingFocus" type="xsd:unsignedByte" />
+              <xsd:element name="DCI" type="xsd:unsignedByte" />
+              <xsd:element name="HCI" type="xsd:unsignedByte" />
+              <xsd:element name="Luck" type="xsd:short" />
+              <xsd:element name="EnhancePotions" type="xsd:unsignedByte" />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xs:schema>
