@@ -11,6 +11,7 @@ namespace LootLogger
         private uint _id;
         private uint _containerId;
         private string _itemName;
+        private int _rating;
         private bool _brittle;
         private bool _sc;
 
@@ -54,6 +55,11 @@ namespace LootLogger
         {
             get { return _itemName; }
             set { _itemName = value; }
+        }
+        public int Rating
+        {
+            get { return _rating; }
+            set { _rating = value; }
         }
         public bool Brittle
         {
@@ -211,6 +217,48 @@ namespace LootLogger
             Brittle = Item.Brittle;
 
             Added = DateTime.Now;
+
+            //item rating
+            if (RPD > 0)
+                Rating += (RPD / 5);
+            if (DI >= 0)
+                Rating += (DI / 5) + (DI / 10);
+            if (HCI > 0)
+                Rating += (HCI / 2) + (HCI / 3);
+            if (DCI > 0)
+                Rating += (DCI / 2) + (DCI / 3);
+            if (HPRegen > 0)
+                Rating += (HPRegen * 4);
+            if (ManaRegen > 0)
+                Rating += (ManaRegen * 4);
+            if (StamRegen > 0)
+                Rating += (StamRegen * 3);
+            if (LRC > 0)
+                Rating += (LRC / 2) + (LRC / 3);
+            if (LMC > 0)
+                Rating += (LMC / 2) + (LMC / 3);
+            if (INTEL > 0)
+                Rating += (INTEL / 2) + (INTEL / 3);
+            if (DEX > 0)
+                Rating += (DEX / 2) + (DEX / 3);
+            if (STR > 0)
+                Rating += (STR / 2) + (STR / 3);
+            if (HP > 0)
+                Rating += (HP / 2) + (HP / 3);
+            if (Stam > 0)
+                Rating += (Stam / 2) + (Stam / 3);
+            if (Mana > 0)
+                Rating += (Mana / 2) + (Mana / 3);
+
+            if (FC > 0)
+                Rating += (FC * 6);
+            if (SSI > 0)
+                Rating += (SSI / 3) + (SSI / 10);
+            if (Luck > 0)
+                Rating += (Luck / 11) + (Luck / 15);
+            if (EnhancePotions > 0)
+                Rating += (EnhancePotions / 6);
+
 
         }
         #endregion
