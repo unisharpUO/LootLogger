@@ -529,7 +529,7 @@
             this.ClientSize = new System.Drawing.Size(694, 691);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
-            this.Text = "(SiB) LootLogger v0.0.1";
+            this.Text = "(unisharp) LootLogger v0.0.1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabSearch.ResumeLayout(false);

@@ -352,11 +352,11 @@ namespace LootLogger
                 new string[] { Item.SkillBonuses.Skill_5_Value.ToString(), _skill5.ToString() },
 
             };
+
             int _totalSkill = 0;
 
             foreach (string[] _s in _skillBonusesString)
             {
-                
                 if (_s[1].Equals("Invalid"))
                     continue;
                 else
@@ -364,7 +364,6 @@ namespace LootLogger
                     SkillBonuses = SkillBonuses + _s[0] + ' ' + _s[1];
                     _totalSkill += Int32.Parse(_s[0]);
                 }
-                    
             }
 
             SkillBonuses = SkillBonuses.Replace('_', ' ');
