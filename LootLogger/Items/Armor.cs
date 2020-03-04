@@ -335,7 +335,7 @@ namespace LootLogger
             Added = DateTime.Now;
 
             //Skill Bonuses
-            SkillBonuses = "none";
+            SkillBonuses = "";
 
             ItemSkillName _skill1 = (ItemSkillName)Item.SkillBonuses.Skill_1_Name;
             ItemSkillName _skill2 = (ItemSkillName)Item.SkillBonuses.Skill_2_Name;
