@@ -487,7 +487,7 @@ namespace LootLogger
             _doc.Save(_outStream);
             _outStream.Close();
         }
-        private void SaveFiles()
+        /* private void SaveFiles()
         {
             try
             {
@@ -653,6 +653,157 @@ namespace LootLogger
                 }
                 txtLootList.AppendLine("Shields saved!");
 
+            }
+            catch (Exception x)
+            {
+                txtLootList.AppendLine("Exception Message: " + x.Message.ToString());
+                txtLootList.AppendLine("Exception Stack Trace: " + x.StackTrace.ToString());
+                txtLootList.AppendLine("Exception Source: " + x.InnerException.Message.ToString());
+            }
+        }*/
+
+        private void SaveFiles()
+        {
+            try
+            {
+                string _startA = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>";
+                File.WriteAllText(ArmorFilePath, _startA);
+                using (StreamWriter sw = File.AppendText(ArmorFilePath))
+                {
+                    sw.WriteLine("<armors>");
+                }
+
+                using (StreamWriter sw = File.AppendText(ArmorFilePath))
+                {
+                    foreach (Armor _a in ArmorList)
+                    {
+                        string _line = "";
+                        int _i = 0;
+                        int _len = _a.GetType().GetProperties().Count();
+
+                        foreach (var property in _a.GetType().GetProperties())
+                        {
+                            ++_i;
+
+                            if (_i == 1)
+                                _line += "<armor ";
+
+                            _line += property.Name + "=\"" + property.GetValue(_a, null) + "\" ";
+
+
+                            if (_i == _len)
+                                _line += "/>";
+                        }
+
+                        sw.WriteLine(_line);
+                    }
+                    sw.WriteLine("</armors>");
+                }
+
+
+                string _startJ = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>";
+                File.WriteAllText(JewelryFilePath, _startJ);
+                using (StreamWriter sw = File.AppendText(JewelryFilePath))
+                {
+                    sw.WriteLine("<jewelry>");
+                }
+
+                using (StreamWriter sw = File.AppendText(JewelryFilePath))
+                {
+                    foreach (Jewelry _a in JewelryList)
+                    {
+                        string _line = "";
+                        int _i = 0;
+                        int _len = _a.GetType().GetProperties().Count();
+
+                        foreach (var property in _a.GetType().GetProperties())
+                        {
+                            ++_i;
+
+                            if (_i == 1)
+                                _line += "<jewel ";
+
+                            _line += property.Name + "=\"" + property.GetValue(_a, null) + "\" ";
+
+
+                            if (_i == _len)
+                                _line += "/>";
+                        }
+
+                        sw.WriteLine(_line);
+                    }
+                    sw.WriteLine("</jewelry>");
+                }
+
+
+                string _startS = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>";
+                File.WriteAllText(ShieldFilePath, _startS);
+                using (StreamWriter sw = File.AppendText(ShieldFilePath))
+                {
+                    sw.WriteLine("<shields>");
+                }
+
+                using (StreamWriter sw = File.AppendText(ShieldFilePath))
+                {
+                    foreach (Shield _a in ShieldList)
+                    {
+                        string _line = "";
+                        int _i = 0;
+                        int _len = _a.GetType().GetProperties().Count();
+
+                        foreach (var property in _a.GetType().GetProperties())
+                        {
+                            ++_i;
+
+                            if (_i == 1)
+                                _line += "<shield ";
+
+                            _line += property.Name + "=\"" + property.GetValue(_a, null) + "\" ";
+
+
+                            if (_i == _len)
+                                _line += "/>";
+                        }
+
+                        sw.WriteLine(_line);
+                    }
+                    sw.WriteLine("</shields>");
+                }
+
+
+                string _startW = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>";
+                File.WriteAllText(WeaponFilePath, _startW);
+                using (StreamWriter sw = File.AppendText(WeaponFilePath))
+                {
+                    sw.WriteLine("<weapons>");
+                }
+
+                using (StreamWriter sw = File.AppendText(WeaponFilePath))
+                {
+                    foreach (Weapon _a in WeaponsList)
+                    {
+                        string _line = "";
+                        int _i = 0;
+                        int _len = _a.GetType().GetProperties().Count();
+
+                        foreach (var property in _a.GetType().GetProperties())
+                        {
+                            ++_i;
+
+                            if (_i == 1)
+                                _line += "<weapon ";
+
+                            _line += property.Name + "=\"" + property.GetValue(_a, null) + "\" ";
+
+
+                            if (_i == _len)
+                                _line += "/>";
+                        }
+
+                        sw.WriteLine(_line);
+                    }
+                    sw.WriteLine("</weapons>");
+                }
             }
             catch (Exception x)
             {
