@@ -1,4 +1,3 @@
-C:\Users\CFS-Jeff\Source\Repos\LootLogger\LootLogger\obj\Debug\LootLogger.csprojAssemblyReference.cache
 C:\Users\CFS-Jeff\Source\Repos\LootLogger\LootLogger\obj\Debug\LootLogger.Form1.resources
 C:\Users\CFS-Jeff\Source\Repos\LootLogger\LootLogger\obj\Debug\LootLogger.Properties.Resources.resources
 C:\Users\CFS-Jeff\Source\Repos\LootLogger\LootLogger\obj\Debug\LootLogger.csproj.GenerateResource.cache
