@@ -72,6 +72,7 @@
             this.workerSearch = new System.ComponentModel.BackgroundWorker();
             this.workerFetch = new System.ComponentModel.BackgroundWorker();
             this.workerDebug = new System.ComponentModel.BackgroundWorker();
+            this.btnExport = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabSearch.SuspendLayout();
             this.tabFetch.SuspendLayout();
@@ -97,6 +98,7 @@
             // 
             // tabSearch
             // 
+            this.tabSearch.Controls.Add(this.btnExport);
             this.tabSearch.Controls.Add(this.cboxShields);
             this.tabSearch.Controls.Add(this.cboxWeapons);
             this.tabSearch.Controls.Add(this.lblMissedItems);
@@ -522,6 +524,16 @@
             this.workerDebug.DoWork += new System.ComponentModel.DoWorkEventHandler(this.workerDebug_DoWork);
             this.workerDebug.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.workerDebug_ProgressChanged);
             // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(168, 607);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(156, 23);
+            this.btnExport.TabIndex = 13;
+            this.btnExport.Text = "Export for Web";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -591,6 +603,7 @@
         private System.Windows.Forms.Button btnDebug;
         private System.Windows.Forms.TextBox txtDebug;
         private System.ComponentModel.BackgroundWorker workerDebug;
+        private System.Windows.Forms.Button btnExport;
     }
 }
 
