@@ -1,6 +1,11 @@
-﻿using System;
+﻿using ScriptSDK;
+using System;
 using System.Xml.Serialization;
 using XScript.Items;
+using System.Collections.Generic;
+using System.Linq;
+using ScriptSDK.Data;
+using XScript.Extensions;
 
 namespace LootLogger
 {
@@ -13,6 +18,8 @@ namespace LootLogger
         private string _itemName;
         private int _rating;
         private bool _brittle;
+
+        private Type _finalType;
 
         private string _hitSpell;
         private string _hitLeech;
@@ -32,7 +39,9 @@ namespace LootLogger
         private string _primaryAbility;
         private string _secondaryAbility;
         private string _weaponType;
+        private ushort _weaponTypeNum;
         private string _skillType;
+        private string _handed;
 
         private string _elementalDamage;
 
@@ -178,11 +187,22 @@ namespace LootLogger
             get { return _secondaryAbility; }
             set { _secondaryAbility = value; }
         }
-
         public string WeaponType
         {
             get { return _weaponType; }
             set { _weaponType = value; }
+        }
+        public string Handed
+        {
+            get { return _handed; }
+            set { _handed = value; }
+        }
+
+        [XmlIgnore]
+        public ushort WeaponTypeNum
+        {
+            get { return _weaponTypeNum; }
+            set { _weaponTypeNum = value; }
         }
         public string SkillType
         {
@@ -299,6 +319,13 @@ namespace LootLogger
         }
         #endregion
 
+        [XmlIgnore]
+        public Type FinalType
+        {
+            get { return _finalType; }
+            set { _finalType = value; }
+        }
+
         #region Constructors
         public Weapon()
         {
@@ -343,15 +370,31 @@ namespace LootLogger
             EnhancePotions = (sbyte)Item.Attributes.EnhancePotions;
             Luck = (short)Item.Attributes.Luck;
             Brittle = Item.Brittle;
-            PrimaryAbility = Item.PrimaryAbility.ToString();
-            SecondaryAbility = Item.SecondaryAbility.ToString();
-            Abilities = PrimaryAbility + " " + SecondaryAbility;
             SkillType = Item.RequiredSkill.ToString();
-            WeaponType = "none";
+            WeaponTypeNum = Item.ObjectType;
             HitSpell = "none";
             HitArea = "none";
 
+            Handed = "";
+            if (Item.ReadHandingType(Item.Properties).Equals(Layer.TwoHanded))
+                Handed = "Two";
+            else
+                Handed = "One";
+
             Added = DateTime.Now;
+
+            GetTypes(typeof(BaseWeapon));
+
+            var _testObj = (BaseWeapon)Activator.CreateInstance(FinalType, new Serial(ID));
+
+            var _tempType = _testObj.ToString();
+            var _tempString = _tempType.Substring(_tempType.IndexOf("\"", 1));
+            WeaponType = _tempString.Trim('\"', '\\');
+
+            PrimaryAbility = _testObj.PrimaryAbility.ToString();
+            SecondaryAbility = _testObj.SecondaryAbility.ToString();
+
+            Abilities = PrimaryAbility + " " + SecondaryAbility;
 
             //Hit Spell
             HitSpell = "";
@@ -378,8 +421,6 @@ namespace LootLogger
                 HitArea = Item.WeaponAttributes.HitPoisonArea + " Hit Poison Area";
             if (Item.WeaponAttributes.HitEnergyArea > 0)
                 HitArea = Item.WeaponAttributes.HitEnergyArea + " Hit Energy Area";
-
-
 
             //item rating
             if (RPD > 0)
@@ -420,7 +461,39 @@ namespace LootLogger
                 Rating += (Luck / 11) + (Luck / 15);
             if (EnhancePotions > 0)
                 Rating += (EnhancePotions / 6);
+        }
+        #endregion
 
+        #region Methods
+        public List<ushort> GetTypes(Type T)
+        {
+            var ca = T.GetCustomAttributes(false);
+            var tlist = new List<ushort>();
+
+            if (ca != null)
+            {
+                foreach (var a in ca)
+                {
+                    if (a is QuerySearchAttribute)
+                    {
+                        var x = (QuerySearchAttribute)a;
+                        tlist.AddRange(x.Graphics);
+                        if (x.Graphics.Contains(WeaponTypeNum))
+                            FinalType = T;
+                    }
+                    else if (a is QueryTypeAttribute)
+                    {
+                        var x = (QueryTypeAttribute)a;
+                        foreach (var e in x.Types)
+                            tlist.AddRange(GetTypes(e));
+                    }
+                }
+            }
+            return tlist.Distinct().ToList();
+        }
+
+        public void MatchTypes()
+        {
 
         }
         #endregion

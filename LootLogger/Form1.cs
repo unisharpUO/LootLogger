@@ -822,7 +822,6 @@ namespace LootLogger
                 txtLootList.AppendLine("Exception Source: " + x.InnerException.Message.ToString());
             }
         }
-
         private void onClilocSpeech(object sender, ClilocSpeechEventArgs e)
         {
             switch (e.Text)
