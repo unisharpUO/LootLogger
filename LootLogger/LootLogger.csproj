@@ -74,7 +74,7 @@
     <Reference Include="MoreLinq, Version=3.3.2.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
       <HintPath>..\packages\morelinq.3.3.2\lib\net451\MoreLinq.dll</HintPath>
     </Reference>
-    <Reference Include="ScriptSDK, Version=1.0.3.22122, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ScriptSDK, Version=0.9.7.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ScriptSDK\ScriptSDK\bin\Debug\ScriptSDK.dll</HintPath>
     </Reference>

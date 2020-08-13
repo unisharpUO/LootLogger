@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using ScriptSDK.Data;
 using XScript.Extensions;
+using ScriptSDK.Engines;
+using StealthAPI;
 
 namespace LootLogger
 {
@@ -383,20 +385,32 @@ namespace LootLogger
 
             Added = DateTime.Now;
 
+            //abiliites
             GetTypes(typeof(BaseWeapon));
-
             var _testObj = (BaseWeapon)Activator.CreateInstance(FinalType, new Serial(ID));
-
             var _tempType = _testObj.ToString();
             var _tempString = _tempType.Substring(_tempType.IndexOf("\"", 1));
             WeaponType = _tempString.Trim('\"', '\\');
-
             PrimaryAbility = _testObj.PrimaryAbility.ToString();
             SecondaryAbility = _testObj.SecondaryAbility.ToString();
-
             Abilities = PrimaryAbility + " " + SecondaryAbility;
 
-            //Hit Spell
+            //elemental damage
+            ElementalDamage = "";
+            var _itemRec = Stealth.Client.GetClilocRec(Item.Serial.Value);
+            if (ClilocHelper.Contains(_itemRec, 1060403))
+                ElementalDamage += "Physical Damage " + ClilocHelper.GetParams(_itemRec, 1060403)[0] + " ";
+            if (ClilocHelper.Contains(_itemRec, 1060404))
+                ElementalDamage += "Fire Damage " + ClilocHelper.GetParams(_itemRec, 1060404)[0] + " ";
+            if (ClilocHelper.Contains(_itemRec, 1060405))
+                ElementalDamage += "Cold Damage " + ClilocHelper.GetParams(_itemRec, 1060405)[0] + " ";
+            if (ClilocHelper.Contains(_itemRec, 1060406))
+                ElementalDamage += "Poison Damage " + ClilocHelper.GetParams(_itemRec, 1060406)[0] + " ";
+            if (ClilocHelper.Contains(_itemRec, 1060407))
+                ElementalDamage += "Energy Damage " + ClilocHelper.GetParams(_itemRec, 1060407)[0];
+
+
+            //hit spell
             HitSpell = "";
             if (Item.WeaponAttributes.HitFatigue > 0)
                 HitSpell += Item.WeaponAttributes.HitFatigue + " Hit Fatigue ";
@@ -411,7 +425,7 @@ namespace LootLogger
             if (Item.WeaponAttributes.HitMagicArrow > 0)
                 HitSpell += Item.WeaponAttributes.HitMagicArrow + " Hit Magic Arrow ";
 
-            //Hit Area
+            //hit area
             HitArea = "";
             if (Item.WeaponAttributes.HitFireArea > 0)
                 HitArea = Item.WeaponAttributes.HitFireArea + " Hit Fire Area";

@@ -20,6 +20,7 @@ using ScriptSDK.Mobiles;
 using XScript.Items;
 using XScript.Scripts.unisharpUO;
 using XScript.Enumerations;
+using XScript;
 
 namespace LootLogger
 {
@@ -177,6 +178,8 @@ namespace LootLogger
         {
             try
             {
+                XConfig.Engine = ShardEngine.Broadsword;
+
                 Scanner.Initialize();
 
                 Scanner.Range = 20;
@@ -191,7 +194,7 @@ namespace LootLogger
                 if (Multisearch == true)
                 {
 
-                    //Stealth.Client.ClilocSpeech += onClilocSpeech;
+                    Stealth.Client.ClilocSpeech += onClilocSpeech;
 
                     FindContainers();
 
@@ -216,13 +219,12 @@ namespace LootLogger
                         FindContainers();
                     }
 
-
-                    Stealth.Client.ClilocSpeech -= onClilocSpeech;
                 }
                 else
                 {
                     Item _result = RequestTarget();
                     Item _container = new Item(new Serial(_result.Serial.Value));
+                    //Item _container = new Item(new Serial(0x4388622D));
                     SearchContainer(_container);
                 }
 
